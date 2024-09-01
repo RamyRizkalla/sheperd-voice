@@ -1,0 +1,37 @@
+{
+  "homeTitle": "Everyday, we'll add new films and hymens...Stay tuned",
+  "@homeTitle": {},
+
+  "filmsTitle": "Movies",
+  "@filmsTitle": {},
+
+  "musicTitle": "Hymns",
+  "@musicTitle": {},
+
+  "bookTitle": "Books",
+  "@bookTitle": {},
+
+  "activitiesTitle": "Sunday School Activities",
+  "@activitiesTitle": {},
+
+  "popeTitle": "Pope's Word",
+  "@popeTitle": {},
+
+  "sheperdVoiceTitle": "صــــوت  الـــراعي",
+  "@sheperdVoiceTitle": {},
+
+  "changeLanguage": "Change Language",
+  "@changeLanguage": {},
+
+  "cancel": "Cancel",
+  "@cancel": {},
+
+  "apply": "Apply",
+  "@apply": {},
+
+  "contactUs": "Contact Us",
+  "@contactUs": {},
+
+  "chooseLanguage": "Choose Language",
+  "@chooseLanguage": {}
+}

@@ -1,0 +1,37 @@
+{
+  "homeTitle": "كل يوم هنضيف أفلام و تراتيل جديدة...تابع معانا.",
+  "@homeTitle": {},
+
+  "filmsTitle": "أفــــــلام",
+  "@filmsTitle": {},
+
+  "musicTitle": "تراتــــيل",
+  "@musicTitle": {},
+
+  "bookTitle": "كــتـــب",
+  "@bookTitle": {},
+
+  "activitiesTitle": "أنشطة مدارس الأحد",
+  "@activitiesTitle": {},
+
+  "popeTitle": "كلمة قداسة البابا",
+  "@popeTitle": {},
+
+  "sheperdVoiceTitle": "صــــوت  الـــراعي",
+  "@sheperdVoiceTitle": {},
+
+  "changeLanguage": "تغيير اللغة",
+  "@changeLanguage": {},
+
+  "cancel": "الغاء",
+  "@cancel": {},
+
+  "apply": "تطبيق",
+  "@apply": {},
+
+  "contactUs": "تواصل معانا",
+  "@contactUs": {},
+
+  "chooseLanguge": "اختار اللغة",
+  "@chooseLanguge": {}
+}
