@@ -116,7 +116,7 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                 const SizedBox(height: 15),
                 Text(
                   widget.headerTitle,
-                  style: TextStyleExt.scada(
+                  style: TextStyleExt.notoSansArabic(
                     textStyle: TextStyle(
                       color: widget.themeColor,
                       fontSize: 36,

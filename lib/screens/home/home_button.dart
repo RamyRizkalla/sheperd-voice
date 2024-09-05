@@ -21,10 +21,7 @@ class HomeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // margin: const EdgeInsets.symmetric(horizontal: 30),
       alignment: Alignment.center,
-      // width: double.maxFinite,
-      // height: 55,
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: const BorderRadius.all(
@@ -62,7 +59,7 @@ class HomeButton extends StatelessWidget {
                   child: Text(
                     title,
                     maxLines: 3,
-                    style: TextStyleExt.scada(
+                    style: TextStyleExt.notoSansArabic(
                       textStyle: TextStyle(
                         color: Colors.white,
                         fontSize: 24,

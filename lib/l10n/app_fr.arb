@@ -15,5 +15,23 @@
   "@activitiesTitle": {},
 
   "popeTitle": "كلمة قداسة البابا",
-  "@popeTitle": {}
+  "@popeTitle": {},
+
+  "sheperdVoiceTitle": "صــــوت  الـــراعي",
+  "@sheperdVoiceTitle": {},
+
+  "changeLanguage": "تغيير اللغة",
+  "@changeLanguage": {},
+
+  "cancel": "الغاء",
+  "@cancel": {},
+
+  "apply": "تطبيق",
+  "@apply": {},
+
+  "contactUs": "تواصل معانا",
+  "@contactUs": {},
+
+  "chooseLanguge": "اختار اللغة",
+  "@chooseLanguge": {}
 }

@@ -112,7 +112,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                         child: Text(
                           categories[index].title,
                           textAlign: TextAlign.center,
-                          style: TextStyleExt.scada(
+                          style: TextStyleExt.notoSansArabic(
                             textStyle: TextStyle(
                               color: Colors.white,
                               fontSize: 20,

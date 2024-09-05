@@ -61,11 +61,11 @@ class ListItem extends StatelessWidget {
                   child: Text(
                     title,
                     textAlign: TextAlign.center,
-                    style: TextStyleExt.scada(
+                    style: TextStyleExt.scheherazadeNew(
                       textStyle: TextStyle(
                         color: titleColor,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
                         shadows: [ShadowExt.textShadow()],
                       ),
                     ),

@@ -81,7 +81,7 @@ class CategoryItem extends StatelessWidget {
                 child: Text(
                   title,
                   maxLines: 3,
-                  style: TextStyleExt.scada(
+                  style: TextStyleExt.notoSansArabic(
                     textStyle: TextStyle(
                       color: titleColor,
                       fontSize: 24,

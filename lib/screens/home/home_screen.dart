@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:shepherd_voice/global/constants/color_constants.dart';
+import 'package:shepherd_voice/global/extensions/text_style_ext.dart';
 import 'package:shepherd_voice/screens/change_language/LanguageChangerDialog.dart';
 import 'package:shepherd_voice/screens/films/films_screen.dart';
 import 'package:shepherd_voice/screens/home/home_button.dart';
@@ -13,8 +13,6 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../global/components/stroke_text.dart';
 import '../../global/constants/domain_constants.dart';
 import '../../global/constants/image_constants.dart';
-import '../activities/activities_categories.dart';
-import '../books/books_categories.dart';
 import '../films/film_player.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -101,133 +99,144 @@ class _HomeScreenState extends State<HomeScreen> {
                             topRight: Radius.circular(80),
                           ),
                         ),
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(35.0, 35, 35.0, 35.0),
-                          child: Column(
-                            children: [
-                              HomeButton(
-                                title: AppLocalizations.of(context)!.filmsTitle,
-                                icon: Images.filmsIcon,
-                                backgroundColor: ColorConstants.purple,
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                      builder: (context) => const FilmsScreen(),
-                                    ),
-                                  );
-                                },
-                              ),
-                              const SizedBox(height: 25),
-                              HomeButton(
-                                title: AppLocalizations.of(context)!.musicTitle,
-                                icon: Images.musicIcon,
-                                backgroundColor: ColorConstants.turquoise,
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                      builder: (context) =>
-                                          const HymensScreen(),
-                                    ),
-                                  );
-                                },
-                              ),
-                              const SizedBox(height: 25),
-                              HomeButton(
-                                title: AppLocalizations.of(context)!.bookTitle,
-                                icon: Images.booksIcon,
-                                backgroundColor: ColorConstants.yellow,
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                      builder: (context) =>
-                                          const BooksCategoriesScreen(),
-                                    ),
-                                  );
-                                },
-                              ),
-                              const SizedBox(height: 20),
-                              HomeButton(
-                                title: AppLocalizations.of(context)!
-                                    .activitiesTitle,
-                                icon: Images.activityIcon,
-                                backgroundColor: ColorConstants.gray,
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                      builder: (context) =>
-                                          const ActivitiesCategoriesScreen(),
-                                    ),
-                                  );
-                                },
-                              ),
-                              const SizedBox(height: 20),
-                              HomeButton(
-                                title: AppLocalizations.of(context)!.popeTitle,
-                                icon: Images.popeIcon,
-                                backgroundColor: ColorConstants.red,
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      fullscreenDialog: true,
-                                      builder: (context) => const FilmPlayer(
-                                        youtubeLink:
-                                            Constants.popeWordVideoLink,
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                              const SizedBox(height: 20),
-                              FilledButton(
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.all<Color?>(
-                                          Colors.white.withOpacity(0.05)),
-                                ),
-                                onPressed: () {
-                                  _launchCaller(
-                                      number: Constants.contactNumber);
-                                },
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      AppLocalizations.of(context)!.contactUs,
-                                      style: GoogleFonts.scada(
-                                        textStyle: const TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w700,
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(
+                                  35.0, 35, 35.0, 35.0),
+                              child: Column(
+                                children: [
+                                  HomeButton(
+                                    title: AppLocalizations.of(context)!
+                                        .filmsTitle,
+                                    icon: Images.filmsIcon,
+                                    backgroundColor: ColorConstants.purple,
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        CupertinoPageRoute(
+                                          builder: (context) =>
+                                              const FilmsScreen(),
                                         ),
-                                      ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          Constants.contactNumber,
-                                          style: GoogleFonts.scada(
-                                            textStyle: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w700,
-                                            ),
+                                      );
+                                    },
+                                  ),
+                                  const SizedBox(height: 25),
+                                  HomeButton(
+                                    title: AppLocalizations.of(context)!
+                                        .musicTitle,
+                                    icon: Images.musicIcon,
+                                    backgroundColor: ColorConstants.turquoise,
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        CupertinoPageRoute(
+                                          builder: (context) =>
+                                              const HymensScreen(),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  const SizedBox(height: 25),
+                                  HomeButton(
+                                    title:
+                                        AppLocalizations.of(context)!.bookTitle,
+                                    icon: Images.booksIcon,
+                                    backgroundColor: ColorConstants.yellow,
+                                    onPressed: () {
+                                      // Navigator.push(
+                                      //   context,
+                                      //   CupertinoPageRoute(
+                                      //     builder: (context) =>
+                                      //         const BooksCategoriesScreen(),
+                                      //   ),
+                                      // );
+                                    },
+                                  ),
+                                  const SizedBox(height: 20),
+                                  HomeButton(
+                                    title: AppLocalizations.of(context)!
+                                        .activitiesTitle,
+                                    icon: Images.activityIcon,
+                                    backgroundColor: ColorConstants.gray,
+                                    onPressed: () {
+                                      // Navigator.push(
+                                      //   context,
+                                      //   CupertinoPageRoute(
+                                      //     builder: (context) =>
+                                      //         const ActivitiesCategoriesScreen(),
+                                      //   ),
+                                      // );
+                                    },
+                                  ),
+                                  const SizedBox(height: 20),
+                                  HomeButton(
+                                    title:
+                                        AppLocalizations.of(context)!.popeTitle,
+                                    icon: Images.popeIcon,
+                                    backgroundColor: ColorConstants.red,
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          fullscreenDialog: true,
+                                          builder: (context) =>
+                                              const FilmPlayer(
+                                            youtubeLink:
+                                                Constants.popeWordVideoLink,
                                           ),
                                         ),
-                                        Images.whatsappIcon,
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                                      );
+                                    },
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                            FilledButton(
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color?>(
+                                        Colors.white.withOpacity(0.05)),
+                              ),
+                              onPressed: () {
+                                _launchCaller(number: Constants.contactNumber);
+                              },
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text(
+                                    AppLocalizations.of(context)!.contactUs,
+                                    style: TextStyleExt.scheherazadeNew(
+                                      textStyle: const TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        Constants.contactNumber,
+                                        style: TextStyleExt.scheherazadeNew(
+                                          textStyle: const TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Images.whatsappIcon,
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
