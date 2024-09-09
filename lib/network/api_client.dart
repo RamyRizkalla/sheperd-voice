@@ -2,6 +2,7 @@ import 'package:basic_utils/basic_utils.dart';
 import 'package:http/http.dart' as http;
 import 'package:shepherd_voice/global/constants/domain_constants.dart';
 import 'package:shepherd_voice/global/helpers/shared_pref_manager.dart';
+import 'package:shepherd_voice/models/category_response.dart';
 import 'package:shepherd_voice/models/film_response.dart';
 import 'package:shepherd_voice/models/module.dart';
 
@@ -63,16 +64,20 @@ class APIClient {
     );
   }
 
-  Future<List<FilmResponse>> getPopeWords({
-    required int page,
-    int pageSize = Constants.pageSize,
+  Future<List<CategoryResponse>> getCategories({
+    required Module module,
   }) async {
-    return _getItems(
-      module: Module.popeWord,
-      converter: (json) => FilmResponse.fromJson(json),
-      page: page,
-      pageSize: pageSize,
-    );
+    Map<String, String> params = {
+      'locale': _languagePref(),
+      'type': StringUtils.camelCaseToLowerUnderscore(module.name)
+    };
+    var response =
+        await http.get(Uri.http(baseUrl, '$_api/categories', params));
+    if (response.statusCode == 200) {
+      return categoriesListFromJson(response.body);
+    } else {
+      throw _returnResponse(response);
+    }
   }
 
   Future<List<T>> _getItems<T extends ModuleResponse>({

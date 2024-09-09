@@ -5,8 +5,9 @@ import 'package:shepherd_voice/models/film_response.dart';
 import 'package:shepherd_voice/screens/books/books_screen.dart';
 
 import '../../global/constants/image_constants.dart';
+import '../../models/module.dart';
 import '../../network/api_client.dart';
-import '../shared/category_widget.dart';
+import '../shared/categories/category_widget.dart';
 
 class BooksCategoriesScreen extends StatefulWidget {
   const BooksCategoriesScreen({super.key});
@@ -24,7 +25,7 @@ class _BooksCategoriesScreenState extends State<BooksCategoriesScreen> {
       headerTitle: AppLocalizations.of(context)!.musicTitle,
       crossAxisCount: 2,
       apiCall: ({required page}) {
-        return APIClient.shared.getHymens(page: page);
+        return APIClient.shared.getCategories(module: Module.book);
       },
       themeColor: ColorConstants.yellow,
       onPressed: (item) {

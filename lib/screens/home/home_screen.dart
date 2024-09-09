@@ -13,6 +13,8 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../global/components/stroke_text.dart';
 import '../../global/constants/domain_constants.dart';
 import '../../global/constants/image_constants.dart';
+import '../activities/activities_categories.dart';
+import '../books/books_categories.dart';
 import '../films/film_player.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -144,13 +146,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     icon: Images.booksIcon,
                                     backgroundColor: ColorConstants.yellow,
                                     onPressed: () {
-                                      // Navigator.push(
-                                      //   context,
-                                      //   CupertinoPageRoute(
-                                      //     builder: (context) =>
-                                      //         const BooksCategoriesScreen(),
-                                      //   ),
-                                      // );
+                                      Navigator.push(
+                                        context,
+                                        CupertinoPageRoute(
+                                          builder: (context) =>
+                                              const BooksCategoriesScreen(),
+                                        ),
+                                      );
                                     },
                                   ),
                                   const SizedBox(height: 20),
@@ -160,13 +162,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     icon: Images.activityIcon,
                                     backgroundColor: ColorConstants.gray,
                                     onPressed: () {
-                                      // Navigator.push(
-                                      //   context,
-                                      //   CupertinoPageRoute(
-                                      //     builder: (context) =>
-                                      //         const ActivitiesCategoriesScreen(),
-                                      //   ),
-                                      // );
+                                      Navigator.push(
+                                        context,
+                                        CupertinoPageRoute(
+                                          builder: (context) =>
+                                              const ActivitiesCategoriesScreen(),
+                                        ),
+                                      );
                                     },
                                   ),
                                   const SizedBox(height: 20),
