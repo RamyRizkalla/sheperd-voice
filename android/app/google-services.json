@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "483168260964",
+    "project_id": "shepard-s-voice",
+    "storage_bucket": "shepard-s-voice.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:483168260964:android:c3a9eddef44b2f0daf2071",
+        "android_client_info": {
+          "package_name": "com.saintGeorgeChurch.shepherdVoice"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwNvuQCU3hm1_XkKJyOkFTpBN3CXYmM7E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
