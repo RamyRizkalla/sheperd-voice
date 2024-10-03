@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,6 +10,9 @@ import 'package:shepherd_voice/screens/home/home_screen.dart';
 
 import 'firebase_options.dart';
 import 'global/helpers/shared_pref_manager.dart';
+import 'network/push_notification_service.dart';
+
+GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,20 +29,49 @@ void main() async {
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     return true;
   };
+
+  // await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+  //   alert: true,
+  //   badge: true,
+  //   sound: true,
+  // );
+  //
+  // await FirebaseMessaging.instance.requestPermission(
+  //   alert: true,
+  //   announcement: false,
+  //   badge: true,
+  //   carPlay: false,
+  //   criticalAlert: false,
+  //   provisional: false,
+  //   sound: true,
+  // );
+
+  String? token = await FirebaseMessaging.instance.getToken();
+  print('>>>>> $token');
+
+  // await PushNotificationService().initialize();
+  // FirebaseMessaging.onBackgroundMessage(backgroundHandler);
+
+  await FirebaseService.initializeFirebase();
   runApp(
-    const AppRootWidget(
+    AppRootWidget(
       child: MyApp(),
     ),
   );
 }
 
+Future<void> backgroundHandler(RemoteMessage message) async {
+  print('Handling a background message ${message.messageId}');
+}
+
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: navigatorKey,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: SharedPrefManager.getLocale(),

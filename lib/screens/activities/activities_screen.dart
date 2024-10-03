@@ -4,46 +4,44 @@ import 'package:shepherd_voice/global/constants/color_constants.dart';
 import 'package:shepherd_voice/models/film_response.dart';
 import 'package:shepherd_voice/models/module.dart';
 import 'package:shepherd_voice/screens/shared/details_screen.dart';
-import 'package:shepherd_voice/screens/shared/pdf_viewer.dart';
+import 'package:shepherd_voice/screens/shared/image_previewer.dart';
 
 import '../../global/constants/image_constants.dart';
 import '../../network/api_client.dart';
 
-class BooksScreen extends StatefulWidget {
-  final int? categoryId;
-
-  const BooksScreen({
+class ActivitiesScreen extends StatefulWidget {
+  const ActivitiesScreen({
     super.key,
-    this.categoryId,
   });
 
   @override
-  State<BooksScreen> createState() => _BooksScreenState();
+  State<ActivitiesScreen> createState() => _ActivitiesScreenState();
 }
 
-class _BooksScreenState extends State<BooksScreen> {
+class _ActivitiesScreenState extends State<ActivitiesScreen> {
   @override
   Widget build(BuildContext context) {
     return DetailsWidget(
-      module: Module.book,
-      icon: Images.booksIcon,
-      headerImage: Images.booksHeader,
-      headerTitle: AppLocalizations.of(context)!.bookTitle,
+      module: Module.activity,
+      icon: Images.activityIcon,
+      headerImage: Images.activitiesHeader,
+      headerTitle: AppLocalizations.of(context)!.activitiesTitle,
       apiCall: ({required page}) {
-        return APIClient.shared.getBooks(
-          categoryId: widget.categoryId,
+        return APIClient.shared.getActivities(
           page: page,
         );
       },
-      themeColor: ColorConstants.yellow,
+      themeColor: ColorConstants.gray,
       onPressed: (item) {
-        FilmResponse book = item as FilmResponse;
+        FilmResponse film = item as FilmResponse;
         Future.delayed(Duration.zero, () {
           Navigator.push(
             context,
             CupertinoPageRoute(
               fullscreenDialog: true,
-              builder: (context) => PDFViewer(item: book),
+              builder: (context) => ImagePreviewer(
+                item: film,
+              ),
             ),
           );
         });

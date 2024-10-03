@@ -1,37 +1,47 @@
 {
-  "homeTitle": "كل يوم هنضيف أفلام و تراتيل جديدة...تابع معانا.",
+  "homeTitle": "Chaque jour, nous ajouterons de nouveaux films et hymnes. Suivez-nous.",
   "@homeTitle": {},
 
-  "filmsTitle": "أفــــــلام",
+  "filmsTitle": "Les films",
   "@filmsTitle": {},
 
-  "musicTitle": "تراتــــيل",
+  "musicTitle": "Les hymnes",
   "@musicTitle": {},
 
-  "bookTitle": "كــتـــب",
+  "bookTitle": "Les livres",
   "@bookTitle": {},
 
-  "activitiesTitle": "أنشطة مدارس الأحد",
+  "activitiesTitle": "Des activités",
   "@activitiesTitle": {},
 
-  "popeTitle": "كلمة قداسة البابا",
+  "popeTitle": "La parole du Papa",
   "@popeTitle": {},
 
   "sheperdVoiceTitle": "صــــوت  الـــراعي",
   "@sheperdVoiceTitle": {},
 
-  "changeLanguage": "تغيير اللغة",
+  "changeLanguage": "Changer de langue",
   "@changeLanguage": {},
 
-  "cancel": "الغاء",
+  "cancel": "Annuler",
   "@cancel": {},
 
-  "apply": "تطبيق",
+  "apply": "Appliquer",
   "@apply": {},
 
-  "contactUs": "تواصل معانا",
+  "contactUs": "Contactez-nous",
   "@contactUs": {},
 
-  "chooseLanguge": "اختار اللغة",
-  "@chooseLanguge": {}
+  "chooseLanguage": "Choisir la langue",
+  "@chooseLanguage": {},
+
+  "booksCategories": "Catégories de livres",
+  "@booksCategories": {},
+
+  "activitiesCategories": "Catégories d'activités",
+  "@activitiesCategories": {},
+
+
+  "moviesCategories": "Catégories de films",
+  "@moviesCategories": {}
 }

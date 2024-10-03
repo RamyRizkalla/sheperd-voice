@@ -17,6 +17,7 @@ class FilmResponse implements ModuleResponse {
   final String itemType;
   final String youtubeLink;
   final int order;
+  final String updatedAt;
 
   FilmResponse({
     required this.id,
@@ -24,6 +25,7 @@ class FilmResponse implements ModuleResponse {
     required this.itemType,
     required this.youtubeLink,
     required this.order,
+    required this.updatedAt,
   });
 
   factory FilmResponse.fromJson(Map<String, dynamic> json) => FilmResponse(
@@ -32,6 +34,7 @@ class FilmResponse implements ModuleResponse {
         itemType: json["item_type"],
         youtubeLink: json["youtube_link"],
         order: json["order"],
+        updatedAt: json["updated_at"],
       );
 
   @override

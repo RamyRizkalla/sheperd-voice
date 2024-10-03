@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../global/components/stroke_text.dart';
 import '../../../global/constants/design_constants.dart';
 import '../../../global/extensions/shadow_ext.dart';
 import '../../../global/extensions/text_style_ext.dart';
@@ -71,6 +72,22 @@ class _CategoryWidgetState extends State<CategoryWidget> {
       body: SafeArea(
         child: Column(
           children: [
+            SizedBox(
+              width: 100,
+              height: 100,
+              child: widget.headerImage,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: StrokeText(
+                widget.headerTitle,
+                fontSize: 36,
+                fontWeight: FontWeight.w700,
+                color: Colors.white,
+                strokeColor: widget.themeColor,
+                strokeWidth: 10,
+              ),
+            ),
             Expanded(
               child: DecoratedBox(
                 decoration: BoxDecoration(
@@ -83,8 +100,6 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                 ),
                 child: GridView.builder(
                   itemCount: categories.length,
-                  // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  //     crossAxisCount: widget.crossAxisCount),
                   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: screenSize.width / 2,
                     crossAxisSpacing: 20,

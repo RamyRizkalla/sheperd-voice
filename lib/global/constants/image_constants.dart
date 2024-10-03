@@ -23,7 +23,7 @@ class Images {
   static final Widget musicHeader = Image.asset('$_path/music_header.png');
   static final Widget booksHeader = Image.asset('$_path/books_header.png');
   static final Widget activitiesHeader =
-      Image.asset('$_path/activities_header.svg');
+      Image.asset('$_path/activities_header.png');
   static final Widget popeHeader = Image.asset('$_path/pope_header.svg');
 
   // Categories
@@ -31,4 +31,6 @@ class Images {
       SvgPicture.asset('$_path/book_category.$_svg');
   static final Widget activityItemCategory =
       SvgPicture.asset('$_path/activity_category.$_svg');
+  static final Widget filmsCategoryHeader =
+      Image.asset('$_path/films_category_header.png');
 }

@@ -2,8 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shepherd_voice/global/constants/color_constants.dart';
+import 'package:shepherd_voice/global/extensions/locale_ext.dart';
 import 'package:shepherd_voice/global/extensions/text_style_ext.dart';
+import 'package:shepherd_voice/screens/activities/activities_screen.dart';
+import 'package:shepherd_voice/screens/books/books_screen.dart';
 import 'package:shepherd_voice/screens/change_language/LanguageChangerDialog.dart';
+import 'package:shepherd_voice/screens/films/films_category.dart';
 import 'package:shepherd_voice/screens/films/films_screen.dart';
 import 'package:shepherd_voice/screens/home/home_button.dart';
 import 'package:shepherd_voice/screens/home/home_screen_title_box.dart';
@@ -13,7 +17,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../global/components/stroke_text.dart';
 import '../../global/constants/domain_constants.dart';
 import '../../global/constants/image_constants.dart';
-import '../activities/activities_categories.dart';
+import '../../global/helpers/shared_pref_manager.dart';
 import '../books/books_categories.dart';
 import '../films/film_player.dart';
 
@@ -114,13 +118,25 @@ class _HomeScreenState extends State<HomeScreen> {
                                     icon: Images.filmsIcon,
                                     backgroundColor: ColorConstants.purple,
                                     onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        CupertinoPageRoute(
-                                          builder: (context) =>
-                                              const FilmsScreen(),
-                                        ),
-                                      );
+                                      if (SharedPrefManager.getLocale() ==
+                                          LocaleExt.arabic) {
+                                        // Categories are available for Arabic language only.
+                                        Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                            builder: (context) =>
+                                                const FilmsCategoriesScreen(),
+                                          ),
+                                        );
+                                      } else {
+                                        Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                            builder: (context) =>
+                                                const FilmsScreen(),
+                                          ),
+                                        );
+                                      }
                                     },
                                   ),
                                   const SizedBox(height: 25),
@@ -146,13 +162,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                     icon: Images.booksIcon,
                                     backgroundColor: ColorConstants.yellow,
                                     onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        CupertinoPageRoute(
-                                          builder: (context) =>
-                                              const BooksCategoriesScreen(),
-                                        ),
-                                      );
+                                      if (SharedPrefManager.getLocale() ==
+                                          LocaleExt.arabic) {
+                                        // Categories are available for Arabic language only.
+                                        Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                            builder: (context) =>
+                                                const BooksCategoriesScreen(),
+                                          ),
+                                        );
+                                      } else {
+                                        Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: (context) =>
+                                                  const BooksScreen()),
+                                        );
+                                      }
                                     },
                                   ),
                                   const SizedBox(height: 20),
@@ -166,7 +193,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         context,
                                         CupertinoPageRoute(
                                           builder: (context) =>
-                                              const ActivitiesCategoriesScreen(),
+                                              const ActivitiesScreen(),
                                         ),
                                       );
                                     },

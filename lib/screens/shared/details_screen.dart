@@ -71,7 +71,6 @@ class _DetailsWidgetState extends State<DetailsWidget> {
   void initState() {
     super.initState();
     loadMore(1);
-    // initList.addAll(item1);
   }
 
   @override
@@ -111,11 +110,13 @@ class _DetailsWidgetState extends State<DetailsWidget> {
           header: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 widget.headerImage,
                 const SizedBox(height: 15),
                 Text(
                   widget.headerTitle,
+                  textAlign: TextAlign.center,
                   style: TextStyleExt.notoSansArabic(
                     textStyle: TextStyle(
                       color: widget.themeColor,

@@ -11,17 +11,23 @@ import '../models/module_response.dart';
 
 class APIClient {
   static final APIClient shared = APIClient._privateConstructor();
-  final String baseUrl = '18.218.44.244:8080';
+  static const baseUrl = '18.218.44.244:8080';
   static const _api = 'api/v1';
 
   APIClient._privateConstructor();
 
+  String downloadPath({required int id}) {
+    return 'http://$baseUrl/$_api/items/$id';
+  }
+
   Future<List<FilmResponse>> getMovies({
+    int? categoryId,
     required int page,
     int pageSize = Constants.pageSize,
   }) async {
     return _getItems(
       module: Module.film,
+      categoryId: categoryId,
       converter: (json) => FilmResponse.fromJson(json),
       page: page,
       pageSize: pageSize,
@@ -41,11 +47,13 @@ class APIClient {
   }
 
   Future<List<FilmResponse>> getBooks({
+    int? categoryId,
     required int page,
     int pageSize = Constants.pageSize,
   }) async {
     return _getItems(
       module: Module.book,
+      categoryId: categoryId,
       converter: (json) => FilmResponse.fromJson(json),
       page: page,
       pageSize: pageSize,
@@ -53,11 +61,13 @@ class APIClient {
   }
 
   Future<List<FilmResponse>> getActivities({
+    int? categoryId,
     required int page,
     int pageSize = Constants.pageSize,
   }) async {
     return _getItems(
       module: Module.activity,
+      categoryId: categoryId,
       converter: (json) => FilmResponse.fromJson(json),
       page: page,
       pageSize: pageSize,
@@ -82,6 +92,7 @@ class APIClient {
 
   Future<List<T>> _getItems<T extends ModuleResponse>({
     required Module module,
+    int? categoryId,
     required T Function(Map<String, dynamic> json) converter,
     required int page,
     required int pageSize,
@@ -90,6 +101,9 @@ class APIClient {
         _trailingParametersPref(page: page, pageSize: pageSize);
     params
         .addAll({'type': StringUtils.camelCaseToLowerUnderscore(module.name)});
+    if (categoryId != null) {
+      params.addAll({'category_id': '$categoryId'});
+    }
     var response = await http.get(Uri.http(baseUrl, '$_api/items', params));
     if (response.statusCode == 200) {
       return listFromJson(

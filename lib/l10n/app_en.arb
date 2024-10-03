@@ -33,5 +33,14 @@
   "@contactUs": {},
 
   "chooseLanguage": "Choose Language",
-  "@chooseLanguage": {}
+  "@chooseLanguage": {},
+
+  "booksCategories": "Books Categories",
+  "@booksCategories": {},
+
+  "activitiesCategories": "Activities Categories",
+  "@activitiesCategories": {},
+
+  "moviesCategories": "Movies Categories",
+  "@moviesCategories": {}
 }

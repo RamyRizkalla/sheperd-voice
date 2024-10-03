@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shepherd_voice/global/constants/domain_constants.dart';
 
 enum SharedPrefKey { languageCode }
 
@@ -61,7 +62,8 @@ class SharedPrefManager {
 
   static Locale getLocale() {
     final localeString =
-        preferences?.getString(SharedPrefKey.languageCode.name) ?? 'en';
+        preferences?.getString(SharedPrefKey.languageCode.name) ??
+            Constants.defaultLanguage;
     return Locale(localeString!);
   }
 }

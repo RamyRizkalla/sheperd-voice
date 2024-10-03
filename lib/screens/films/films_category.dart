@@ -2,38 +2,38 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shepherd_voice/global/constants/color_constants.dart';
 import 'package:shepherd_voice/models/category_response.dart';
-import 'package:shepherd_voice/screens/books/books_screen.dart';
+import 'package:shepherd_voice/screens/films/films_screen.dart';
 
 import '../../global/constants/image_constants.dart';
 import '../../models/module.dart';
 import '../../network/api_client.dart';
 import '../shared/categories/category_widget.dart';
 
-class BooksCategoriesScreen extends StatefulWidget {
-  const BooksCategoriesScreen({super.key});
+class FilmsCategoriesScreen extends StatefulWidget {
+  const FilmsCategoriesScreen({super.key});
 
   @override
-  State<BooksCategoriesScreen> createState() => _BooksCategoriesScreenState();
+  State<FilmsCategoriesScreen> createState() => _FilmsCategoriesScreenState();
 }
 
-class _BooksCategoriesScreenState extends State<BooksCategoriesScreen> {
+class _FilmsCategoriesScreenState extends State<FilmsCategoriesScreen> {
   @override
   Widget build(BuildContext context) {
     return CategoryWidget(
-      icon: Images.bookItemCategory,
-      headerImage: Images.booksIcon,
-      headerTitle: AppLocalizations.of(context)!.booksCategories,
+      icon: Images.filmsIcon,
+      headerImage: Images.filmsCategoryHeader,
+      headerTitle: AppLocalizations.of(context)!.moviesCategories,
       crossAxisCount: 2,
       apiCall: ({required page}) {
-        return APIClient.shared.getCategories(module: Module.book);
+        return APIClient.shared.getCategories(module: Module.film);
       },
-      themeColor: ColorConstants.yellow,
+      themeColor: ColorConstants.purple,
       onPressed: (item) {
         CategoryResponse category = item as CategoryResponse;
         Navigator.push(
           context,
           CupertinoPageRoute(
-            builder: (context) => BooksScreen(
+            builder: (context) => FilmsScreen(
               categoryId: category.id,
             ),
           ),

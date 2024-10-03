@@ -10,7 +10,9 @@ import '../../global/constants/image_constants.dart';
 import '../../network/api_client.dart';
 
 class FilmsScreen extends StatefulWidget {
-  const FilmsScreen({super.key});
+  final int? categoryId;
+
+  const FilmsScreen({super.key, this.categoryId});
 
   @override
   State<FilmsScreen> createState() => _FilmsScreenState();
@@ -25,20 +27,21 @@ class _FilmsScreenState extends State<FilmsScreen> {
       headerImage: Images.filmsHeader,
       headerTitle: AppLocalizations.of(context)!.filmsTitle,
       apiCall: ({required page}) {
-        return APIClient.shared.getMovies(page: page);
+        return APIClient.shared.getMovies(
+          categoryId: widget.categoryId,
+          page: page,
+        );
       },
       themeColor: ColorConstants.purple,
       onPressed: (item) {
         FilmResponse film = item as FilmResponse;
-        Future.delayed(Duration.zero, () {
-          Navigator.push(
-            context,
-            CupertinoPageRoute(
-              fullscreenDialog: true,
-              builder: (context) => FilmPlayer(youtubeLink: film.youtubeLink),
-            ),
-          );
-        });
+        Navigator.push(
+          context,
+          CupertinoPageRoute(
+            fullscreenDialog: true,
+            builder: (context) => FilmPlayer(youtubeLink: film.youtubeLink),
+          ),
+        );
       },
     );
   }

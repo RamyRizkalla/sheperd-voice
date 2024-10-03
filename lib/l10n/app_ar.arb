@@ -33,5 +33,14 @@
   "@contactUs": {},
 
   "chooseLanguge": "اختار اللغة",
-  "@chooseLanguge": {}
+  "@chooseLanguge": {},
+
+  "booksCategories": "أصناف الـكــتـــب",
+  "@booksCategories": {},
+
+  "activitiesCategories": "أصناف الأنشطة",
+  "@activitiesCategories": {},
+
+  "moviesCategories": "أصناف الأفلام",
+  "@moviesCategories": {}
 }
