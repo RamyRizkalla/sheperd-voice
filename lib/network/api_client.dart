@@ -3,8 +3,8 @@ import 'package:http/http.dart' as http;
 import 'package:shepherd_voice/global/constants/domain_constants.dart';
 import 'package:shepherd_voice/global/helpers/shared_pref_manager.dart';
 import 'package:shepherd_voice/models/category_response.dart';
-import 'package:shepherd_voice/models/film_response.dart';
-import 'package:shepherd_voice/models/module.dart';
+import 'package:shepherd_voice/models/item_response.dart';
+import 'package:shepherd_voice/models/module_name.dart';
 
 import '../models/app_exception.dart';
 import '../models/module_response.dart';
@@ -16,66 +16,66 @@ class APIClient {
 
   APIClient._privateConstructor();
 
-  String downloadPath({required int id}) {
+  String downloadPath({required String id}) {
     return 'http://$baseUrl/$_api/items/$id';
   }
 
-  Future<List<FilmResponse>> getMovies({
+  Future<List<ItemResponse>> getMovies({
     int? categoryId,
     required int page,
     int pageSize = Constants.pageSize,
   }) async {
     return _getItems(
-      module: Module.film,
+      module: ModuleName.film,
       categoryId: categoryId,
-      converter: (json) => FilmResponse.fromJson(json),
+      converter: (json) => ItemResponse.fromJson(json),
       page: page,
       pageSize: pageSize,
     );
   }
 
-  Future<List<FilmResponse>> getHymens({
+  Future<List<ItemResponse>> getHymens({
     required int page,
     int pageSize = Constants.pageSize,
   }) async {
     return _getItems(
-      module: Module.song,
-      converter: (json) => FilmResponse.fromJson(json),
+      module: ModuleName.song,
+      converter: (json) => ItemResponse.fromJson(json),
       page: page,
       pageSize: pageSize,
     );
   }
 
-  Future<List<FilmResponse>> getBooks({
+  Future<List<ItemResponse>> getBooks({
     int? categoryId,
     required int page,
     int pageSize = Constants.pageSize,
   }) async {
     return _getItems(
-      module: Module.book,
+      module: ModuleName.book,
       categoryId: categoryId,
-      converter: (json) => FilmResponse.fromJson(json),
+      converter: (json) => ItemResponse.fromJson(json),
       page: page,
       pageSize: pageSize,
     );
   }
 
-  Future<List<FilmResponse>> getActivities({
+  Future<List<ItemResponse>> getActivities({
     int? categoryId,
     required int page,
     int pageSize = Constants.pageSize,
   }) async {
     return _getItems(
-      module: Module.activity,
+      module: ModuleName.activity,
       categoryId: categoryId,
-      converter: (json) => FilmResponse.fromJson(json),
+      converter: (json) => ItemResponse.fromJson(json),
       page: page,
       pageSize: pageSize,
     );
   }
 
   Future<List<CategoryResponse>> getCategories({
-    required Module module,
+    required ModuleName module,
   }) async {
     Map<String, String> params = {
       'locale': _languagePref(),
@@ -91,7 +91,7 @@ class APIClient {
   }
 
   Future<List<T>> _getItems<T extends ModuleResponse>({
-    required Module module,
+    required ModuleName module,
     int? categoryId,
     required T Function(Map<String, dynamic> json) converter,
     required int page,

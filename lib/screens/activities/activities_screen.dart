@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shepherd_voice/global/constants/color_constants.dart';
-import 'package:shepherd_voice/models/film_response.dart';
-import 'package:shepherd_voice/models/module.dart';
+import 'package:shepherd_voice/models/item_response.dart';
+import 'package:shepherd_voice/models/module_name.dart';
 import 'package:shepherd_voice/screens/shared/details_screen.dart';
 import 'package:shepherd_voice/screens/shared/image_previewer.dart';
 
@@ -22,7 +22,7 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
   @override
   Widget build(BuildContext context) {
     return DetailsWidget(
-      module: Module.activity,
+      module: ModuleName.activity,
       icon: Images.activityIcon,
       headerImage: Images.activitiesHeader,
       headerTitle: AppLocalizations.of(context)!.activitiesTitle,
@@ -33,7 +33,7 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
       },
       themeColor: ColorConstants.gray,
       onPressed: (item) {
-        FilmResponse film = item as FilmResponse;
+        ItemResponse film = item as ItemResponse;
         Future.delayed(Duration.zero, () {
           Navigator.push(
             context,

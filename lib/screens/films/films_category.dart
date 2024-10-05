@@ -5,7 +5,7 @@ import 'package:shepherd_voice/models/category_response.dart';
 import 'package:shepherd_voice/screens/films/films_screen.dart';
 
 import '../../global/constants/image_constants.dart';
-import '../../models/module.dart';
+import '../../models/module_name.dart';
 import '../../network/api_client.dart';
 import '../shared/categories/category_widget.dart';
 
@@ -25,7 +25,7 @@ class _FilmsCategoriesScreenState extends State<FilmsCategoriesScreen> {
       headerTitle: AppLocalizations.of(context)!.moviesCategories,
       crossAxisCount: 2,
       apiCall: ({required page}) {
-        return APIClient.shared.getCategories(module: Module.film);
+        return APIClient.shared.getCategories(module: ModuleName.film);
       },
       themeColor: ColorConstants.purple,
       onPressed: (item) {
@@ -34,7 +34,7 @@ class _FilmsCategoriesScreenState extends State<FilmsCategoriesScreen> {
           context,
           CupertinoPageRoute(
             builder: (context) => FilmsScreen(
-              categoryId: category.id,
+              category: category,
             ),
           ),
         );

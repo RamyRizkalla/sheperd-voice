@@ -44,7 +44,7 @@ dependencies:
   enhanced_paginated_view: ^1.0.7
   flutter_svg_opt: ^0.0.2
   url_launcher: ^6.3.0
-  youtube_player_flutter: ^8.1.2
+  youtube_player_flutter: ^9.1.1
   basic_utils: ^5.7.0
   firebase_core: ^3.4.0
   firebase_crashlytics: ^4.1.0

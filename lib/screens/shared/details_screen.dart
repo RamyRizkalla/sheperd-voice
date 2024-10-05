@@ -6,14 +6,14 @@ import 'package:shepherd_voice/screens/shared/list_item.dart';
 
 import '../../global/constants/domain_constants.dart';
 import '../../global/extensions/text_style_ext.dart';
-import '../../models/module.dart';
+import '../../models/module_name.dart';
 import '../../models/module_response.dart';
 
 typedef RequestCallback = Future<List<ModuleResponse>> Function(
     {required int page});
 
 class DetailsWidget extends StatefulWidget {
-  final Module module;
+  final ModuleName module;
   final Widget icon;
   final RequestCallback apiCall;
   final String headerTitle;

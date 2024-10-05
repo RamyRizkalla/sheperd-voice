@@ -41,7 +41,9 @@
   "activitiesCategories": "Catégories d'activités",
   "@activitiesCategories": {},
 
-
   "moviesCategories": "Catégories de films",
-  "@moviesCategories": {}
+  "@moviesCategories": {},
+
+  "filmHint": "Pour regarder et télécharger le film sur Youtube, cliquez sur le nom du film.",
+  "@filmHint": {}
 }

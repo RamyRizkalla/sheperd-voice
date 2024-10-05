@@ -3,12 +3,12 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:photo_view/photo_view.dart';
-import 'package:shepherd_voice/models/film_response.dart';
+import 'package:shepherd_voice/models/item_response.dart';
 
 import '../../network/api_client.dart';
 
 class ImagePreviewer extends StatefulWidget {
-  final FilmResponse item;
+  final ItemResponse item;
 
   const ImagePreviewer({super.key, required this.item});
 

@@ -42,5 +42,8 @@
   "@activitiesCategories": {},
 
   "moviesCategories": "أصناف الأفلام",
-  "@moviesCategories": {}
+  "@moviesCategories": {},
+
+  "filmHint": "لمشاهدة الفيلم و تحميله من اليوتيوب، اضغط علي اسم الفيلم",
+  "@filmHint": {}
 }

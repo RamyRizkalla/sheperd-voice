@@ -5,7 +5,7 @@ import 'package:shepherd_voice/models/category_response.dart';
 import 'package:shepherd_voice/screens/books/books_screen.dart';
 
 import '../../global/constants/image_constants.dart';
-import '../../models/module.dart';
+import '../../models/module_name.dart';
 import '../../network/api_client.dart';
 import '../shared/categories/category_widget.dart';
 
@@ -25,7 +25,7 @@ class _BooksCategoriesScreenState extends State<BooksCategoriesScreen> {
       headerTitle: AppLocalizations.of(context)!.booksCategories,
       crossAxisCount: 2,
       apiCall: ({required page}) {
-        return APIClient.shared.getCategories(module: Module.book);
+        return APIClient.shared.getCategories(module: ModuleName.book);
       },
       themeColor: ColorConstants.yellow,
       onPressed: (item) {
@@ -34,7 +34,7 @@ class _BooksCategoriesScreenState extends State<BooksCategoriesScreen> {
           context,
           CupertinoPageRoute(
             builder: (context) => BooksScreen(
-              categoryId: category.id,
+              category: category,
             ),
           ),
         );

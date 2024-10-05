@@ -6,13 +6,13 @@ import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:shepherd_voice/models/film_response.dart';
+import 'package:shepherd_voice/models/item_response.dart';
 import 'package:shepherd_voice/network/api_client.dart';
 
 import '../../global/constants/color_constants.dart';
 
 class PDFViewer extends StatefulWidget {
-  final FilmResponse item;
+  final ItemResponse item;
 
   const PDFViewer({super.key, required this.item});
 
@@ -29,20 +29,30 @@ class _PDFViewerState extends State<PDFViewer> {
   ValueNotifier downloadProgressNotifier = ValueNotifier(0);
   CancelToken cancelToken = CancelToken();
 
+  String get itemTitle =>
+      '${widget.item.id}_${widget.item.title}_${widget.item.updatedAtDate.millisecondsSinceEpoch}';
+
   void requestPersmission() async {
     await Permission.storage.status;
   }
 
+  Future<Directory?> requestDirectory() async {
+    if (Platform.isAndroid) {
+      String directory = "/storage/emulated/0/Downloads/";
+      bool dirDownloadExists = await Directory(directory).exists();
+      if (!dirDownloadExists) {
+        directory = "/storage/emulated/0/Download/";
+      }
+      return Directory(directory)!;
+    } else {
+      return getApplicationDocumentsDirectory();
+    }
+  }
+
   void downloadFileFromServer() async {
     downloadProgressNotifier.value = 0;
-    Directory directory = Directory("");
-    if (Platform.isAndroid) {
-      directory = (await getExternalStorageDirectory())!;
-    } else {
-      directory = (await getApplicationDocumentsDirectory());
-    }
-    String itemTitle =
-        '${widget.item.id}_${widget.item.title}_${widget.item.updatedAt}';
+    Directory directory = await requestDirectory() ?? Directory("");
+
     String localFilePath = '${directory.path}/$itemTitle.pdf';
     await Dio().download(
       APIClient.shared.downloadPath(id: widget.item.id),
@@ -85,14 +95,8 @@ class _PDFViewerState extends State<PDFViewer> {
   }
 
   Future<String> localFilePath() async {
-    Directory directory = Directory("");
-    if (Platform.isAndroid) {
-      directory = (await getExternalStorageDirectory())!;
-    } else {
-      directory = (await getApplicationDocumentsDirectory());
-    }
-    String itemTitle =
-        '${widget.item.id}_${widget.item.title}_${widget.item.updatedAt}';
+    Directory directory = await requestDirectory() ?? Directory("");
+
     return '${directory.path}/$itemTitle.pdf';
   }
 
@@ -109,7 +113,7 @@ class _PDFViewerState extends State<PDFViewer> {
           appBar: AppBar(
             title: Text(widget.item.title),
           ),
-          body: Text(
+          body: const Text(
             "PDF Not Available",
             style: TextStyle(fontSize: 20),
           ),

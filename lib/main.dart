@@ -13,6 +13,7 @@ import 'global/helpers/shared_pref_manager.dart';
 import 'network/push_notification_service.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+late BuildContext globalContext;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,29 +31,21 @@ void main() async {
     return true;
   };
 
-  // await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
-  //   alert: true,
-  //   badge: true,
-  //   sound: true,
-  // );
-  //
-  // await FirebaseMessaging.instance.requestPermission(
-  //   alert: true,
-  //   announcement: false,
-  //   badge: true,
-  //   carPlay: false,
-  //   criticalAlert: false,
-  //   provisional: false,
-  //   sound: true,
-  // );
+  await FirebaseMessaging.instance.requestPermission(
+    alert: true,
+    announcement: false,
+    badge: true,
+    carPlay: false,
+    criticalAlert: false,
+    provisional: false,
+    sound: true,
+  );
 
   String? token = await FirebaseMessaging.instance.getToken();
   print('>>>>> $token');
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
-  // await PushNotificationService().initialize();
-  // FirebaseMessaging.onBackgroundMessage(backgroundHandler);
-
-  await FirebaseService.initializeFirebase();
+  await PushNotificationService.initializeFirebase();
   runApp(
     AppRootWidget(
       child: MyApp(),
@@ -60,8 +53,9 @@ void main() async {
   );
 }
 
-Future<void> backgroundHandler(RemoteMessage message) async {
-  print('Handling a background message ${message.messageId}');
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  print("Handling a background message: ${message.messageId}");
 }
 
 class MyApp extends StatelessWidget {

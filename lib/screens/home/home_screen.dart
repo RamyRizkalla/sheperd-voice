@@ -4,13 +4,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shepherd_voice/global/constants/color_constants.dart';
 import 'package:shepherd_voice/global/extensions/locale_ext.dart';
 import 'package:shepherd_voice/global/extensions/text_style_ext.dart';
+import 'package:shepherd_voice/main.dart';
+import 'package:shepherd_voice/network/push_notification_service.dart';
 import 'package:shepherd_voice/screens/activities/activities_screen.dart';
 import 'package:shepherd_voice/screens/books/books_screen.dart';
 import 'package:shepherd_voice/screens/change_language/LanguageChangerDialog.dart';
 import 'package:shepherd_voice/screens/films/films_category.dart';
 import 'package:shepherd_voice/screens/films/films_screen.dart';
 import 'package:shepherd_voice/screens/home/home_button.dart';
-import 'package:shepherd_voice/screens/home/home_screen_title_box.dart';
 import 'package:shepherd_voice/screens/hymens/hymens_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -29,6 +30,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    globalContext = context;
+    PushNotificationService.getInitialMessage();
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
@@ -84,14 +92,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ColorConstants.homeTitle,
                         strokeColor: Colors.white,
                         strokeWidth: 10,
-                      ),
-                      const SizedBox(
-                        height: 25,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(60, 0, 60, 0),
-                        child: MainScreenTitleBox(
-                            title: AppLocalizations.of(context)!.homeTitle),
                       ),
                       const SizedBox(
                         height: 25,
@@ -209,10 +209,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                         context,
                                         MaterialPageRoute(
                                           fullscreenDialog: true,
-                                          builder: (context) =>
-                                              const FilmPlayer(
+                                          builder: (context) => FilmPlayer(
                                             youtubeLink:
                                                 Constants.popeWordVideoLink,
+                                            title: AppLocalizations.of(context)!
+                                                .popeTitle,
                                           ),
                                         ),
                                       );
@@ -228,7 +229,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                         Colors.white.withOpacity(0.05)),
                               ),
                               onPressed: () {
-                                _launchCaller(number: Constants.contactNumber);
+                                _launchWhatsapp(
+                                  number: Constants.contactNumber.substring(1),
+                                );
                               },
                               child: Row(
                                 mainAxisAlignment:
@@ -288,12 +291,12 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  _launchCaller({required String number}) async {
-    final url = Uri.parse('tel:$number');
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-    } else {
-      throw 'Could not launch $url';
+  _launchWhatsapp({required String number}) async {
+    String contact = number;
+    String url = "https://wa.me/$contact";
+
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
     }
   }
 }

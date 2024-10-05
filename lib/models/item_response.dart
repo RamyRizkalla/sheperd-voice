@@ -7,33 +7,29 @@ List<T> listFromJson<T extends ModuleResponse>(
   return List<T>.from((json.decode(str) as List).map((x) => converter(x)));
 }
 
-List<FilmResponse> filmsListFromJson(String str) => List<FilmResponse>.from(
-    (json.decode(str) as List).map((x) => FilmResponse.fromJson(x)));
-
-class FilmResponse implements ModuleResponse {
-  final int id;
+class ItemResponse implements ModuleResponse {
+  final String id;
   @override
   final String title;
   final String itemType;
-  final String youtubeLink;
-  final int order;
+  final String? youtubeLink;
   final String updatedAt;
 
-  FilmResponse({
+  DateTime get updatedAtDate => DateTime.parse(updatedAt);
+
+  ItemResponse({
     required this.id,
     required this.title,
     required this.itemType,
     required this.youtubeLink,
-    required this.order,
     required this.updatedAt,
   });
 
-  factory FilmResponse.fromJson(Map<String, dynamic> json) => FilmResponse(
+  factory ItemResponse.fromJson(Map<String, dynamic> json) => ItemResponse(
         id: json["id"],
         title: json["title"],
         itemType: json["item_type"],
         youtubeLink: json["youtube_link"],
-        order: json["order"],
         updatedAt: json["updated_at"],
       );
 
