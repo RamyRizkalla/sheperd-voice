@@ -6,6 +6,7 @@ import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:shepherd_voice/models/item_response.dart';
 import 'package:shepherd_voice/network/api_client.dart';
 
@@ -124,7 +125,16 @@ class _PDFViewerState extends State<PDFViewer> {
 
   Widget buildPdfView(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.item.title)),
+      appBar: AppBar(
+        title: Text(widget.item.title),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.share),
+            tooltip: 'Open shopping cart',
+            onPressed: () => _onShareWithResult(context),
+          ),
+        ],
+      ),
       body: PDFView(
         filePath: urlPDFPath,
         autoSpacing: true,
@@ -139,36 +149,46 @@ class _PDFViewerState extends State<PDFViewer> {
     );
   }
 
+  void _onShareWithResult(BuildContext context) async {
+    final result =
+        await Share.shareXFiles([XFile(urlPDFPath)], text: widget.item.title);
+
+    if (result.status == ShareResultStatus.success) {
+      print('Thank you for sharing the picture!');
+    }
+  }
+
   Widget buildProgressView(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.item.title)),
       body: Center(
         child: ValueListenableBuilder(
-            valueListenable: downloadProgressNotifier,
-            builder: (context, value, snapshot) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CircularPercentIndicator(
-                    radius: 50.0,
-                    lineWidth: 10.0,
-                    // animation: true,
-                    percent: downloadProgressNotifier.value / 100,
-                    center: Text(
-                      "${downloadProgressNotifier.value}%",
-                      style: const TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black),
-                    ),
-                    backgroundColor: Colors.grey.shade300,
-                    circularStrokeCap: CircularStrokeCap.round,
-                    progressColor: ColorConstants.yellow,
+          valueListenable: downloadProgressNotifier,
+          builder: (context, value, snapshot) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CircularPercentIndicator(
+                  radius: 50.0,
+                  lineWidth: 10.0,
+                  // animation: true,
+                  percent: downloadProgressNotifier.value / 100,
+                  center: Text(
+                    "${downloadProgressNotifier.value}%",
+                    style: const TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black),
                   ),
-                ],
-              );
-            }),
+                  backgroundColor: Colors.grey.shade300,
+                  circularStrokeCap: CircularStrokeCap.round,
+                  progressColor: ColorConstants.yellow,
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

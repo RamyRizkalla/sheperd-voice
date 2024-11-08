@@ -24,6 +24,7 @@ class _FilmPlayerState extends State<FilmPlayer> {
       initialVideoId: YoutubePlayer.convertUrlToId(widget.youtubeLink)!,
       flags: const YoutubePlayerFlags(
         autoPlay: true,
+        enableCaption: false,
       ),
     );
     super.initState();
