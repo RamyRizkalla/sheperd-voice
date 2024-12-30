@@ -39,12 +39,7 @@ class _PDFViewerState extends State<PDFViewer> {
 
   Future<Directory?> requestDirectory() async {
     if (Platform.isAndroid) {
-      String directory = "/storage/emulated/0/Downloads/";
-      bool dirDownloadExists = await Directory(directory).exists();
-      if (!dirDownloadExists) {
-        directory = "/storage/emulated/0/Download/";
-      }
-      return Directory(directory)!;
+      return getDownloadsDirectory();
     } else {
       return getApplicationDocumentsDirectory();
     }
@@ -130,7 +125,6 @@ class _PDFViewerState extends State<PDFViewer> {
         actions: [
           IconButton(
             icon: const Icon(Icons.share),
-            tooltip: 'Open shopping cart',
             onPressed: () => _onShareWithResult(context),
           ),
         ],
@@ -147,15 +141,6 @@ class _PDFViewerState extends State<PDFViewer> {
         },
       ),
     );
-  }
-
-  void _onShareWithResult(BuildContext context) async {
-    final result =
-        await Share.shareXFiles([XFile(urlPDFPath)], text: widget.item.title);
-
-    if (result.status == ShareResultStatus.success) {
-      print('Thank you for sharing the picture!');
-    }
   }
 
   Widget buildProgressView(BuildContext context) {
@@ -191,5 +176,14 @@ class _PDFViewerState extends State<PDFViewer> {
         ),
       ),
     );
+  }
+
+  void _onShareWithResult(BuildContext context) async {
+    final result =
+        await Share.shareXFiles([XFile(urlPDFPath)], text: widget.item.title);
+
+    if (result.status == ShareResultStatus.success) {
+      print('Thank you for sharing the picture!');
+    }
   }
 }
