@@ -17,6 +17,9 @@
   "popeTitle": "كلمة قداسة البابا",
   "@popeTitle": {},
 
+  "flashDriveTitle": "تقديم دروس بالكمبيوتر",
+  "@flashDriveTitle": {},
+
   "sheperdVoiceTitle": "صــــوت  الـــراعي",
   "@sheperdVoiceTitle": {},
 
@@ -29,7 +32,7 @@
   "apply": "تطبيق",
   "@apply": {},
 
-  "contactUs": "تواصل معانا",
+  "contactUs": "اضغط هنا للتواصل Whatsapp",
   "@contactUs": {},
 
   "chooseLanguge": "اختار اللغة",
@@ -45,5 +48,11 @@
   "@moviesCategories": {},
 
   "filmHint": "لمشاهدة الفيلم و تحميله من اليوتيوب، اضغط علي اسم الفيلم",
-  "@filmHint": {}
+  "@filmHint": {},
+
+  "usbExplanation": "فكرة عن تقديم الدرس",
+  "@usbExplanation": {},
+
+  "usbContent": "تحميل ٨٠ درس",
+  "@usbContent": {}
 }

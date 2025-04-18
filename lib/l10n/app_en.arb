@@ -17,6 +17,9 @@
   "popeTitle": "Pope's Word",
   "@popeTitle": {},
 
+  "flashDriveTitle": "Providing computer lessons",
+  "@flashDriveTitle": {},
+
   "sheperdVoiceTitle": "صــــوت  الـــراعي",
   "@sheperdVoiceTitle": {},
 
@@ -29,7 +32,7 @@
   "apply": "Apply",
   "@apply": {},
 
-  "contactUs": "Contact Us",
+  "contactUs": "Contact via WhatsApp",
   "@contactUs": {},
 
   "chooseLanguage": "Choose Language",
@@ -45,5 +48,11 @@
   "@moviesCategories": {},
 
   "filmHint": "To watch and download the movie on Youtube, press on the movie's name",
-  "@filmHint": {}
+  "@filmHint": {},
+
+  "usbExplanation": "An idea about delivering the lesson",
+  "@usbExplanation": {},
+
+  "usbContent": "Download 80 Lessons",
+  "@usbContent": {}
 }

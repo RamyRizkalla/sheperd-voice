@@ -16,6 +16,7 @@ class Images {
   static final Widget filmsIcon = SvgPicture.asset('$_path/films_icon.$_svg');
   static final Widget musicIcon = SvgPicture.asset('$_path/music_icon.$_svg');
   static final Widget popeIcon = SvgPicture.asset('$_path/pope_icon.$_svg');
+  static final Widget usbIcon = Image.asset('$_path/usb_icon.png');
   static final Widget whatsappIcon = Image.asset('$_path/whatsapp_icon.png');
 
   // Headers
@@ -25,6 +26,7 @@ class Images {
   static final Widget activitiesHeader =
       Image.asset('$_path/activities_header.png');
   static final Widget popeHeader = Image.asset('$_path/pope_header.svg');
+  static final Widget usbHeader = Image.asset('$_path/usb_header.png');
 
   // Categories
   static final Widget bookItemCategory =

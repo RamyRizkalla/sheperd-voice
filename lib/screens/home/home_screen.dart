@@ -13,6 +13,7 @@ import 'package:shepherd_voice/screens/films/films_category.dart';
 import 'package:shepherd_voice/screens/films/films_screen.dart';
 import 'package:shepherd_voice/screens/home/home_button.dart';
 import 'package:shepherd_voice/screens/hymens/hymens_screen.dart';
+import 'package:shepherd_voice/screens/usb/usb_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../global/components/stroke_text.dart';
@@ -219,38 +220,60 @@ class _HomeScreenState extends State<HomeScreen> {
                                       );
                                     },
                                   ),
+                                  const SizedBox(height: 20),
+                                  HomeButton(
+                                    title: AppLocalizations.of(context)!
+                                        .flashDriveTitle,
+                                    icon: Images.usbIcon,
+                                    backgroundColor: ColorConstants.blue,
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        CupertinoPageRoute(
+                                          builder: (context) =>
+                                              const USBScreen(),
+                                        ),
+                                      );
+                                    },
+                                  ),
                                 ],
                               ),
                             ),
-                            FilledButton(
-                              style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color?>(
-                                        Colors.white.withOpacity(0.05)),
-                              ),
-                              onPressed: () {
-                                _launchWhatsapp(
-                                  number: Constants.contactNumber.substring(1),
-                                );
-                              },
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Text(
-                                    AppLocalizations.of(context)!.contactUs,
-                                    style: TextStyleExt.scheherazadeNew(
-                                      textStyle: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w700,
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(
+                                  30.0, 0, 30.0, 35.0),
+                              child: SizedBox(
+                                height: 60,
+                                child: FilledButton(
+                                  style: ButtonStyle(
+                                    shape: WidgetStateProperty.all(
+                                      RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(30.0),
+                                        side: const BorderSide(
+                                          style: BorderStyle.solid,
+                                          width: 4,
+                                          color: ColorConstants.whatsappGreen,
+                                        ),
                                       ),
                                     ),
+                                    backgroundColor:
+                                        WidgetStateProperty.all<Color?>(
+                                      Colors.white.withOpacity(0.05),
+                                    ),
                                   ),
-                                  Row(
+                                  onPressed: () {
+                                    _launchWhatsapp(
+                                      number:
+                                          Constants.contactNumber.substring(1),
+                                    );
+                                  },
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
                                     children: [
                                       Text(
-                                        Constants.contactNumber,
+                                        AppLocalizations.of(context)!.contactUs,
                                         style: TextStyleExt.scheherazadeNew(
                                           textStyle: const TextStyle(
                                             color: Colors.black,
@@ -265,7 +288,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       Images.whatsappIcon,
                                     ],
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ],

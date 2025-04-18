@@ -1,4 +1,6 @@
 import 'package:basic_utils/basic_utils.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:http/http.dart' as http;
 import 'package:shepherd_voice/global/constants/domain_constants.dart';
 import 'package:shepherd_voice/global/helpers/shared_pref_manager.dart';
@@ -6,6 +8,7 @@ import 'package:shepherd_voice/models/category_response.dart';
 import 'package:shepherd_voice/models/item_response.dart';
 import 'package:shepherd_voice/models/module_name.dart';
 
+import '../global/extensions/locale_ext.dart';
 import '../models/app_exception.dart';
 import '../models/module_response.dart';
 
@@ -72,6 +75,47 @@ class APIClient {
       page: page,
       pageSize: pageSize,
     );
+  }
+
+  Future<List<ItemResponse>> getUSB(BuildContext context) async {
+    var link = '';
+    if (SharedPrefManager.getLocale() == LocaleExt.arabic) {
+      link = 'https://youtu.be/LBE6_os7OWk?si=rbx0puconv_5pWlw';
+    } else if (SharedPrefManager.getLocale() == LocaleExt.english) {
+      link = 'https://youtu.be/Owqnt72jiTE?si=UsN9Bh8WjsP2usM2';
+    } else {
+      link = 'https://youtu.be/XpXPcm4VnjE';
+    }
+    var usbExplanation = ItemResponse(
+      id: '1',
+      title: AppLocalizations.of(context)!.usbExplanation,
+      itemType: 'USB',
+      youtubeLink: link,
+      updatedAt: '',
+    );
+
+    var flashContentLink = '';
+    if (SharedPrefManager.getLocale() == LocaleExt.english) {
+      flashContentLink =
+          'https://drive.google.com/drive/folders/1zpyy2BPBkRK26w1DsyxOzpe4v3yjfIVn?usp=sharing';
+    } else if (SharedPrefManager.getLocale() == LocaleExt.french) {
+      flashContentLink =
+          'https://drive.google.com/drive/folders/1E-O-OL1NUnI7VLUwT3U1GzGFEQjcUK2r?usp=sharing';
+    }
+
+    var usbContent = ItemResponse(
+      id: '2',
+      title: AppLocalizations.of(context)!.usbContent,
+      itemType: 'USB',
+      youtubeLink: flashContentLink,
+      updatedAt: '',
+    );
+
+    if (SharedPrefManager.getLocale() == LocaleExt.arabic) {
+      return [usbExplanation];
+    } else {
+      return [usbExplanation, usbContent];
+    }
   }
 
   Future<List<CategoryResponse>> getCategories({

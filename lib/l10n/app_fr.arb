@@ -17,6 +17,9 @@
   "popeTitle": "La parole du Papa",
   "@popeTitle": {},
 
+  "flashDriveTitle": "Dispensation de cours d'informatique",
+  "@flashDriveTitle": {},
+
   "sheperdVoiceTitle": "صــــوت  الـــراعي",
   "@sheperdVoiceTitle": {},
 
@@ -29,7 +32,7 @@
   "apply": "Appliquer",
   "@apply": {},
 
-  "contactUs": "Contactez-nous",
+  "contactUs": "Contact via WhatsApp",
   "@contactUs": {},
 
   "chooseLanguage": "Choisir la langue",
@@ -45,5 +48,11 @@
   "@moviesCategories": {},
 
   "filmHint": "Pour regarder et télécharger le film sur Youtube, cliquez sur le nom du film.",
-  "@filmHint": {}
+  "@filmHint": {},
+
+  "usbExplanation": "Une idée sur la présentation du cours",
+  "@usbExplanation": {},
+
+  "usbContent": "Télécharger 80 leçons",
+  "@usbContent": {}
 }
