@@ -272,7 +272,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: [
-                                      Text(
+                                      Expanded(child: Text(
                                         AppLocalizations.of(context)!.contactUs,
                                         style: TextStyleExt.scheherazadeNew(
                                           textStyle: const TextStyle(
@@ -281,7 +281,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             fontWeight: FontWeight.w700,
                                           ),
                                         ),
-                                      ),
+                                      )),
                                       const SizedBox(
                                         width: 10,
                                       ),
