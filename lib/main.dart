@@ -1,10 +1,11 @@
 import 'dart:ui';
 
-import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/fire'
+    'base_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shepherd_voice/l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shepherd_voice/screens/home/home_screen.dart';
 
