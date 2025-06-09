@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shepherd_voice/l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shepherd_voice/global/constants/color_constants.dart';
 import 'package:shepherd_voice/models/category_response.dart';
 import 'package:shepherd_voice/models/item_response.dart';

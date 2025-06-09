@@ -1,6 +1,6 @@
 import 'package:basic_utils/basic_utils.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:shepherd_voice/l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:http/http.dart' as http;
 import 'package:shepherd_voice/global/constants/domain_constants.dart';
 import 'package:shepherd_voice/global/helpers/shared_pref_manager.dart';
